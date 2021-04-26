@@ -1,8 +1,8 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Course;
+import com.example.springtemplate.models.Appointment;
 import com.example.springtemplate.models.Section;
-import com.example.springtemplate.repositories.CourseRepository;
+import com.example.springtemplate.repositories.AppointmentRepository;
 import com.example.springtemplate.repositories.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class SectionOrmDao {
     SectionRepository sectionRepository;
 
     @Autowired
-    CourseRepository courseRepository;
+    AppointmentRepository appointmentRepository;
 
     @PostMapping("/api/sections")
     public Section createSection(@RequestBody Section section) {
@@ -27,18 +27,18 @@ public class SectionOrmDao {
             @PathVariable("courseId") Integer cid,
             @RequestBody Section section) {
         section = sectionRepository.save(section);
-        Course course = courseRepository.findById(cid).get();
+        Appointment course = appointmentRepository.findById(cid).get();
         section.setCourse(course);
         return sectionRepository.save(section);
     }
 
-    @GetMapping("/api/courses/{cid}/sections")
+   /* @GetMapping("/api/courses/{cid}/sections")
     public List<Section> findSectionsForCourse(
             @PathVariable("cid") Integer courseId) {
-        Course course = courseRepository.findById(courseId).get();
+        Appointment course = appointmentRepository.findById(courseId).get();
         return course.getSections();
     }
-    
+    */
     @GetMapping("/api/sections")
     public List<Section> findAllSections() {
         return (List<Section>) sectionRepository.findAll();

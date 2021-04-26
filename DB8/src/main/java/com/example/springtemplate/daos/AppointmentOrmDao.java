@@ -1,7 +1,7 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Course;
-import com.example.springtemplate.repositories.CourseRepository;
+import com.example.springtemplate.models.Appointment;
+import com.example.springtemplate.repositories.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,47 +9,44 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class CourseOrmDao {
+public class AppointmentOrmDao {
     @Autowired
-    CourseRepository courseRepository;
+    AppointmentRepository appointmentRepository;
 
-    @PostMapping("/api/courses")
-    public Course createCourse(@RequestBody Course course) {
-        return courseRepository.save(course);
+    @PostMapping("/api/appointments")
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
     
-    @GetMapping("/api/courses")
-    public List<Course> findAllCourses() {
-        return (List<Course>) courseRepository.findAll();
-    }
-    
-    @GetMapping("/api/courses/{courseId}")
-    public Course findCourseById(
-            @PathVariable("courseId") Integer id) {
-        return courseRepository.findById(id).get();
+    @GetMapping("/api/appointments")
+    public List<Appointment> findAllAppointments() {
+
+     return appointmentRepository.findAllAppointments();
     }
 
-    @GetMapping("/api/update/course/{courseId}/{password}")
-    public Course updateCourse(
-            @PathVariable("courseId") Integer id,
-            @PathVariable("password") String newPass) {
-        Course course = this.findCourseById(id);
-        course.setTitle(newPass);
-        return courseRepository.save(course);
+    @GetMapping("/api/appointments/{appointmentId}")
+    public Appointment findAppointmentById(
+            @PathVariable("appointmentId") Integer id) {
+        return appointmentRepository.findAppointmentById(id);
     }
 
-    @PutMapping("/api/courses/{courseId}")
-    public Course updateCourse(
-            @PathVariable("courseId") Integer id,
-            @RequestBody() Course newCourse) {
-        Course course = this.findCourseById(id);
-        course.setTitle(newCourse.getTitle());
-        return courseRepository.save(course);
+
+
+    @PutMapping("/api/appointments/{appointmentId}")
+    public Appointment updateAppointment(
+//         print("hello")
+            @PathVariable("appointmentId") Integer id,
+            @RequestBody Appointment newAppointment) {
+        Appointment appointment = appointmentRepository.findAppointmentById(id);
+        appointment.setPatientid(newAppointment.getPatientid());
+        appointment.setPhysicianid(newAppointment.getPhysicianid());
+        appointment.setDateOfAppointment(newAppointment.getDateOfAppointment());
+        return appointmentRepository.save(appointment);
     }
 
-    @DeleteMapping("/api/courses/{courseId}")
-    public void deleteCourse(
-            @PathVariable("courseId") Integer id) {
-        courseRepository.deleteById(id);
+    @DeleteMapping("/api/appointments/{appointmentId}")
+    public void deleteAppointment(
+            @PathVariable("appointmentId") Integer id) {
+        appointmentRepository.deleteById(id);
     }
 }

@@ -1,12 +1,8 @@
 package com.example.springtemplate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.xml.bind.v2.model.core.ID;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.sql.Date;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name="sections")
@@ -23,7 +19,7 @@ public class Section {
     
     @ManyToOne
     @JsonIgnore
-    private Course course;
+    private Appointment course;
 
     public Boolean getOnline() {
         return online;
@@ -73,11 +69,11 @@ public class Section {
         this.name = name;
     }
 
-    public Course getCourse() {
+    public Appointment getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(Appointment course) {
         this.course = course;
     }
 }
