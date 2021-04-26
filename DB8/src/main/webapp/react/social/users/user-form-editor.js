@@ -1,4 +1,5 @@
 import userService from "./user-service"
+import {findAllAppointments} from "../appointments/appointment-service";
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 const UserFormEditor = () => {
@@ -7,8 +8,10 @@ const UserFormEditor = () => {
     const [user, setUser] = useState({})
     useEffect(() => {
         if(id !== "new") {
+
             findUserById(id)
         }
+
     }, []);
     const createUser = (user) =>
         userService.createUser(user)

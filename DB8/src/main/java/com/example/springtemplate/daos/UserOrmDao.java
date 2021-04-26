@@ -44,7 +44,7 @@ public class UserOrmDao {
     }
 
 
-    @DeleteMapping("/api/users/{userId}")
+    @DeleteMapping ("/api/users/{userId}")
     public void deleteUser(@PathVariable("userId") Integer id) {
        userRepository.deleteById(id);
     }
