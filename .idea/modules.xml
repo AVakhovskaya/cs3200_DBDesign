@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cs3200_db.iml" filepath="$PROJECT_DIR$/.idea/cs3200_db.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DB8/spring-template.iml" filepath="$PROJECT_DIR$/DB8/spring-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/db_design_final_project/spring-template.iml" filepath="$PROJECT_DIR$/db_design_final_project/spring-template.iml" />
     </modules>
   </component>
 </project>
