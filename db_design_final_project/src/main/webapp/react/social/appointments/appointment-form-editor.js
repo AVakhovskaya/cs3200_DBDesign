@@ -52,7 +52,6 @@ const AppointmentFormEditor = () => {
                        setAppointment(appointment =>
                            ({...appointment, dateOfAppointment: e.target.value}))}
                    value={appointment.dateOfAppointment}/><br/>
-
             <button className="btn btn-warning"
                     onClick={() => {
                         history.goBack()}}>

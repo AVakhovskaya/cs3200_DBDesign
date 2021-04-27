@@ -33,7 +33,6 @@ public class PrescriptionsOrmDao {
             @PathVariable("prescriptionId") Integer id,
             @RequestBody Prescriptions newPrescriptions) {
         Prescriptions prescriptions = prescriptionsRepository.findPrescriptionsByById(id);
-        prescriptions.setAppointmentid(newPrescriptions.getAppointmentid());
         prescriptions.setMedicinename(newPrescriptions.getMedicinename());
         prescriptions.setDateofrefill(newPrescriptions.getDateofrefill());
         return prescriptionsRepository.save(prescriptions);

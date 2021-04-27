@@ -24,7 +24,7 @@ const PrescriptionList = () => {
                     prescriptions.map(prescription =>
                         <li className="list-group-item" key={prescription.id}>
                             <Link to={`/prescriptions/${prescription.id}`}>
-                                {prescription.appointmentid},
+                                {prescription.id},
                                 {prescription.medicinename},
                                 {prescription.dateofrefill}
                             </Link>

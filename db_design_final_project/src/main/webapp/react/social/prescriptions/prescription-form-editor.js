@@ -27,12 +27,14 @@ const PrescriptionFormEditor = () => {
             <h2>Prescription Editor</h2>
             <label>Id</label>
             <input className="form-control" value={prescription.id}/><br/>
-            <label>AppointmentID</label>
-            <input className="form-control"
-                   onChange={(e) =>
-                       setPrescription(prescription =>
-                           ({...prescription, appointmentid: e.target.value}))}
-                   value={prescription.appointmentid}/><br/>
+
+            {/*<label>AppointmentID</label>*/}
+            {/*<input className="form-control"*/}
+            {/*       onChange={(e) =>*/}
+            {/*           setPrescription(prescription =>*/}
+            {/*               ({...prescription, appointment_id: e.target.value}))}*/}
+            {/*       value={prescription.appointment_id}/><br/>*/}
+
             <label>Medicine Name</label>
             <input className="form-control"
                    onChange={(e) =>

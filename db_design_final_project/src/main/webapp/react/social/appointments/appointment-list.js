@@ -29,6 +29,7 @@ const AppointmentList = () => {
                                 {Appointment.patientid},
                                 {Appointment.physicianid},
                                 {Appointment.dateOfAppointment}
+                                {Appointment.prescriptions}
                             </Link>
                         </li>)
                 }
