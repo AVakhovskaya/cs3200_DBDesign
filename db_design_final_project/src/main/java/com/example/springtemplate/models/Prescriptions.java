@@ -14,13 +14,12 @@ public class Prescriptions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer appointmentid;
     private String medicinename;
     private Date dateofrefill;
     
-    @ManyToOne
-    @JsonIgnore
-    private Prescriptions prescriptions;
+  @ManyToOne
+  @JsonIgnore
+  private Appointment appointment;
 
     public Integer getId() {
         return id;
@@ -30,12 +29,14 @@ public class Prescriptions {
         this.id = id;
     }
 
-    public Integer getAppointmentid() {
-        return appointmentid;
+
+
+    public Appointment getAppointment() {
+        return appointment;
     }
 
-    public void setAppointmentid(Integer appointmentid) {
-        this.appointmentid = appointmentid;
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 
     public String getMedicinename() {
@@ -55,7 +56,6 @@ public class Prescriptions {
     }
 
     public Prescriptions(Integer appointmentid, String medicinename, Date dateofrefill) {
-        this.appointmentid = appointmentid;
         this.medicinename = medicinename;
         this.dateofrefill = dateofrefill;
     }

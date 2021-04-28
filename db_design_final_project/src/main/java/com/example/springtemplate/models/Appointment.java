@@ -2,6 +2,7 @@ package com.example.springtemplate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.example.springtemplate.models.Prescriptions;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -12,12 +13,19 @@ public class Appointment {
     private  Integer physicianid;
     private  Integer patientid;
     private Date dateofappointment;
+    @OneToMany(mappedBy = "appointment")
+    private List< Prescriptions > prescriptions;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
-
+    public List<Prescriptions> getPrescriptions() {
+        return prescriptions;
+    }
+    public void setPrescriptions(List<Prescriptions> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -34,38 +42,11 @@ public class Appointment {
 
 
 
-    /* @OneToMany(mappedBy = "appointment")
-     @JsonIgnore
-     private List<Section> sections;
-
-     public List<Section> getSections() {
-         return sections;
-     }
-
-     public void setSections(List<Section> sections) {
-         this.sections = sections;
-     }
-
-     public Integer getId() {
-         return id;
-     }
-
-     public void setId(Integer id) {
-         this.id = id;
-     }
-
-     public String getTitle() {
-         return title;
-     }
-
-     public void setTitle(String title) {
-         this.title = title;
-     }
- */
-    public Appointment(Integer patientid, Integer physicianid, Date dateofappointment) {
+    public Appointment(Integer patientid, Integer physicianid, Date dateofappointment,List<Prescriptions> prescriptions) {
         this.patientid = patientid;
         this.physicianid = physicianid;
         this.dateofappointment = dateofappointment;
+        this.prescriptions = prescriptions;
     }
 
     public Appointment() {

@@ -4,6 +4,7 @@ import AppointmentFormEditor from "./appointments/appointment-form-editor";
 import UserFormEditor from "./users/user-form-editor";
 import PrescriptionList from "./prescriptions/prescription-list";
 import PrescriptionFormEditor from "./prescriptions/prescription-form-editor";
+import PrescriptionListForAppt from "./prescriptions/prescription-list-for-appt";
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
     return (
@@ -30,6 +31,10 @@ const App = () => {
                 </Route>
                 <Route path="/prescriptions/:id" exact={true}>
                     <PrescriptionFormEditor/>
+                </Route>
+
+                <Route path="/byappt/:apptid" exact={true}>
+                    <PrescriptionListForAppt/>
                 </Route>
 
             </HashRouter>

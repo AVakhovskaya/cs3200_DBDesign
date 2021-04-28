@@ -1,5 +1,6 @@
 import userService from "./user-service"
 import appointmentService from "./appointment-service"
+import prescriptionService from "../prescriptions/prescription-service";
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 const AppointmentFormEditor = () => {
@@ -14,6 +15,10 @@ const AppointmentFormEditor = () => {
     const createAppointment = (appointment) =>
         appointmentService.createAppointment(appointment)
             .then(() => history.goBack())
+
+    const findPrescriptionsByApptId = (id) =>
+        prescriptionService.findPrescriptionsByApptId(id)
+            .then(() => history.push(`/prescriptions/byappt/${appointment.id}`))
 
     const findAppointmentById = (id) =>
         appointmentService.findAppointmentById(id)
@@ -52,7 +57,6 @@ const AppointmentFormEditor = () => {
                        setAppointment(appointment =>
                            ({...appointment, dateOfAppointment: e.target.value}))}
                    value={appointment.dateOfAppointment}/><br/>
-
             <button className="btn btn-warning"
                     onClick={() => {
                         history.goBack()}}>
@@ -70,6 +74,11 @@ const AppointmentFormEditor = () => {
             <button className="btn btn-primary"
                     onClick={() => updateAppointment(appointment.id, appointment)}>
                 Save
+            </button>
+            <button className="btn btn-primary"
+                     //onClick={() => findPrescriptionsByApptId(appointment.id)}>
+                    onClick={() => history.push(`/byappt/${appointment.id}`)}>
+                List Prescriptions
             </button>
         </div>
     )

@@ -1,24 +1,21 @@
-const {Link, useHistory} = window.ReactRouterDOM;
+const {Link,useParams,useHistory} = window.ReactRouterDOM;
 
-import prescriptionService, {findAllPrescriptions} from "./prescription-service"
+import prescriptionService, {findAllPrescriptions, findPrescriptionsByApptId} from "./prescription-service"
 const { useState, useEffect } = React;
 
-const PrescriptionList = () => {
+const PrescriptionListForAppt = () => {
+    const {apptid} = useParams()
     const history = useHistory()
     const [prescriptions, setPrescriptions] = useState([])
     useEffect(() => {
-        findAllPrescriptions()
+        findPrescriptionsByApptId(apptid)
     }, [])
-    const findAllPrescriptions = () =>
-        prescriptionService.findAllPrescriptions()
+    const findPrescriptionsByApptId = (apptid) =>
+        prescriptionService.findPrescriptionsByApptId(apptid)
             .then(prescriptions => setPrescriptions(prescriptions))
     return(
         <div>
             <h2>Prescription List</h2>
-            <button className="btn btn-primary"
-                    onClick={() => history.push("/prescriptions/new")}>
-                Add Prescription
-            </button>
             <ul className="list-group">
                 {
                     prescriptions.map(prescription =>
@@ -31,8 +28,13 @@ const PrescriptionList = () => {
                         </li>)
                 }
             </ul>
+            <button className="btn btn-warning"
+                    onClick={() => {
+                        history.goBack()}}>
+                Cancel
+            </button>
         </div>
     )
 }
 
-export default PrescriptionList;
+export default PrescriptionListForAppt;
