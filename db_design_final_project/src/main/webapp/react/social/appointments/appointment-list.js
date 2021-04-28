@@ -29,7 +29,7 @@ const AppointmentList = () => {
                                 {Appointment.patientid},
                                 {Appointment.physicianid},
                                 {Appointment.dateOfAppointment}
-                                {Appointment.prescriptions}
+                                {/*{Appointment.prescriptions}*/}
                             </Link>
                         </li>)
                 }

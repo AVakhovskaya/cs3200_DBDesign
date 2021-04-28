@@ -25,14 +25,20 @@ public class PrescriptionsOrmDao {
     @GetMapping("/api/prescriptions/{prescriptionId}")
     public Prescriptions findPrescriptionsById(
             @PathVariable("prescriptionId") Integer id) {
-        return prescriptionsRepository.findPrescriptionsByById(id);
+        return prescriptionsRepository.findPrescriptionsById(id);
+    }
+
+    @GetMapping("/api/byappt/{prescriptionApptId}")
+    public List<Prescriptions>  findPrescriptionsByApptId(
+            @PathVariable("prescriptionApptId") Integer prescriptionApptId) {
+        return prescriptionsRepository.findPrescriptionsByApptId(prescriptionApptId);
     }
 
     @PutMapping("/api/prescriptions/{prescriptionId}")
     public Prescriptions updatePrescription(
             @PathVariable("prescriptionId") Integer id,
             @RequestBody Prescriptions newPrescriptions) {
-        Prescriptions prescriptions = prescriptionsRepository.findPrescriptionsByById(id);
+        Prescriptions prescriptions = prescriptionsRepository.findPrescriptionsById(id);
         prescriptions.setMedicinename(newPrescriptions.getMedicinename());
         prescriptions.setDateofrefill(newPrescriptions.getDateofrefill());
         return prescriptionsRepository.save(prescriptions);

@@ -14,5 +14,9 @@ public interface PrescriptionsRepository
     public List<Prescriptions> findAllPrescriptions();
     @Query(value = "SELECT * FROM prescriptions WHERE id=:prescriptionId",
             nativeQuery = true)
-    public Prescriptions findPrescriptionsByById(@Param("prescriptionId") Integer id);
+    public Prescriptions findPrescriptionsById(@Param("prescriptionId") Integer id);
+
+    @Query(value = "SELECT * FROM prescriptions WHERE appointment_id=:prescriptionApptId",
+            nativeQuery = true)
+    public List<Prescriptions> findPrescriptionsByApptId(@Param("prescriptionApptId") Integer prescriptionApptId);
 }

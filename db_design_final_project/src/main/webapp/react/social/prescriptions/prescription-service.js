@@ -8,6 +8,9 @@ export const findPrescriptionsById = (id) =>
     fetch(`${PRESCRIPTIONS_URL}/${id}`)
         .then(response => response.json())
 
+export const findPrescriptionsByApptId = (prescriptionApptId) =>
+    fetch(`http://localhost:8080/api/byappt/${prescriptionApptId}`)
+        .then(response => response.json())
 
 export const deletePrescription = (id) =>
     fetch(`${PRESCRIPTIONS_URL}/${id}`, {
@@ -35,6 +38,7 @@ export const updatePrescription = (id, prescription) =>
 export default {
     findAllPrescriptions,
     findPrescriptionsById,
+    findPrescriptionsByApptId,
     deletePrescription,
     createPrescription,
     updatePrescription

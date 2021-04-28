@@ -10,8 +10,10 @@ export const findAllAppointments = () =>
 export const findAppointmentById = (id) =>
     fetch(`${APPOINTMENTS_URL }/${id}`)
         .then(response => response.json())
-
-
+//
+// export const findPrescriptionsByApptId = (prescriptionApptId) =>
+//     fetch(`http://localhost:8080/api/prescriptions/byappt/${prescriptionApptId}`)
+//         .then(response => response.json())
 
 // TODO: delete a user by their ID
 export const deleteAppointment = (id) =>
@@ -44,6 +46,7 @@ export const updateAppointment = (id, appointment) =>
 export default {
     findAllAppointments,
     findAppointmentById,
+    // findPrescriptionsByApptId,
     deleteAppointment,
     createAppointment,
     updateAppointment
