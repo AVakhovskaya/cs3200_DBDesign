@@ -4,25 +4,18 @@ import prescriptionService, {findAllPrescriptions, findPrescriptionsByApptId} fr
 const { useState, useEffect } = React;
 
 const PrescriptionListForAppt = () => {
-    //document.write("test")
-    const {apptId} = useParams()
-    window.alert(apptId)
-    // apptId = 1;
+    const {apptid} = useParams()
     const history = useHistory()
     const [prescriptions, setPrescriptions] = useState([])
     useEffect(() => {
-        findPrescriptionsByApptId(id)
+        findPrescriptionsByApptId(apptid)
     }, [])
-    const findPrescriptionsByApptId = (id) =>
-        prescriptionService.findPrescriptionsByApptId(id)
+    const findPrescriptionsByApptId = (apptid) =>
+        prescriptionService.findPrescriptionsByApptId(apptid)
             .then(prescriptions => setPrescriptions(prescriptions))
     return(
         <div>
             <h2>Prescription List</h2>
-            <button className="btn btn-primary"
-                    onClick={() => history.push("/prescriptions/new")}>
-                Add Prescription
-            </button>
             <ul className="list-group">
                 {
                     prescriptions.map(prescription =>
@@ -35,6 +28,11 @@ const PrescriptionListForAppt = () => {
                         </li>)
                 }
             </ul>
+            <button className="btn btn-warning"
+                    onClick={() => {
+                        history.goBack()}}>
+                Cancel
+            </button>
         </div>
     )
 }

@@ -33,7 +33,7 @@ const App = () => {
                     <PrescriptionFormEditor/>
                 </Route>
 
-                <Route path="/byappt/:id" exact={true}>
+                <Route path="/byappt/:apptid" exact={true}>
                     <PrescriptionListForAppt/>
                 </Route>
 
