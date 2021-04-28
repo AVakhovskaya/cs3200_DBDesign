@@ -14,16 +14,19 @@ A hospital is having issues tracking the prescriptions that the physicians are w
 [ db_design_final_project_UML.pdf](https://github.com/AVakhovskaya/cs3200_DBDesign/files/6381524/db_design_final_project_UML.pdf)
 
 6. Description of user data model
+One patient meets with one physician at an appointment, where they are prescribed medicine.
 
 7. Description of the two domain object data models:
 The two domain object models that we implemented in our User Interface were "Appointments" and "Prescriptions". The Appointments object has an id, patientId, physianId and date of appointment field. The Prescriptions object has an id, and appointmentId, the medicine name and date of refill fields.
 
 8. Description of the user to domain object relationship
+The appointment table reifies the relationship between physician and patient,which is a many to many relationship
 
 9. Description of the domain object to domain object relationship
+The domain objects were “appointments” and “prescriptions”. These domain objects form a 1 to many relationship, where 1 appointment prescribes multiple prescriptions. 
 
 10. Description of the portable enumeration: 
-Our portable enumeration is set to show the different kinds of Medicines available for any given perscription. We have a total of 6 different medicines in the enum.
+Our portable enumeration is set to show the different kinds of Medicines available for any given perscription. The medicine names are enumerated to six values “Adderall”, “Fentanyl”, “Lisinopril”, “Melatonin”, “Prednisone” and “Sublocade”, as the possible medicines that the physician can prescribe.   
 
 11. Description of the user interface requirements:
 Our User Interface has a list of Users, Appointments and Prescriptions and a button to **CREATE** more of each of these objects. Each list contains a link to the single item in the list which then brings you to a sreen where you can **READ**, **UPDATE**, or **DELETE** the items. Additionally, we created a button on the Appointment screen to list the Prescriptions (1 to many relationship) associated with the appointment. *As a note, when creating or updating any records, only the values 2-4 are valid for patient_id and only values 7-9 are valid for physcian_id.*
